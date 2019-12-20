@@ -1,0 +1,118 @@
+/*--- Container for cube animation ---*/
+#viewStage{
+    width: 450px;
+    height: 300px;
+    margin:5em auto;
+    perspective: 450px;
+    perspective-origin: 50% 50%;
+}
+
+/*--- Cube Style ---*/
+.cube {
+    position: relative;
+    float: left;
+    width: 150px;
+    height: 300px;
+
+    /*--- Cube 3D Transforms attributes ---*/
+
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+
+    /*--- Cube Animation attributes ---*/
+    animation-name: rotation;
+    animation-timing-function: cubic-bezier(0.6, -1, 0.4, 1.5);
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+}
+
+/*-- Keyframes --*/
+@keyframes rotation {
+    from, to {  }
+    10%, 25% {transform: rotateX(-90deg); }
+    35%, 50% {transform: rotateX(-180deg); }
+    60%, 75% {transform: rotateX(-270deg); }
+    85%, 100% {transform: rotateX(-360deg); }
+}
+
+#cube1 {
+    z-index: 1;
+    animation-delay: 1s;
+}
+
+#cube2 {
+    z-index: 2;
+    animation-delay: 1.2s;
+}
+
+#cube3 {
+    z-index: 1;
+    animation-delay: 1.4s;
+}
+
+/* Each cube's face share same attributes*/
+.cube div {
+    position: absolute;
+    background-color: #000;
+    background-size: 450px 300px;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+}
+
+/* Face group fb - Front and Back */
+.cube div.fb {
+    width: 150px;
+    height: 300px;
+}
+
+/* Face group tb - Top and Bottom */
+.cube div.tb {
+    width: 150px;
+    height: 300px;
+}
+
+/* Face group lr - Left and Right */
+.cube div.lr {
+    width: 300px;
+    height: 300px;
+}
+
+/*--- Individual Face attributes ---*/
+.facefront {
+    background: url('assets/images/image1.jpg');
+    transform: translateZ(150px);
+}
+
+.faceback {
+    background-image: url('assets/images/image2.jpg');
+    transform: rotateY(180deg) rotateZ(180deg) translateZ(150px);
+}
+
+.facetop {
+    background-image: url('assets/images/image3.jpg');
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+.facebottom {
+    background-image: url('assets/images/image4.jpg');
+    transform: rotateX(-90deg) translateZ(150px);
+}
+
+.faceleft {
+    transform: rotateY(90deg) translateZ(0px);
+}
+
+.faceright {
+    transform: rotateY(-90deg) translateZ(150px);
+}
+
+/* Background position */
+#cube1 div {
+    background-position: 0 0;
+}
+#cube2 div {
+    background-position: -150px 0;
+}
+#cube3 div {
+    background-position: -300px 0;
+}
